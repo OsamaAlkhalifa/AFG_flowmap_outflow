@@ -21,7 +21,7 @@ require([
       id: 'oneToManyLayer',
       visible: true,
       originAndDestinationFieldIds: {
-        originUniqueIdField: 'e_locality',
+        originUniqueIdField: 's_State',
         originGeometry: {
           x: 'e_lon',
           y: 'e_lat',
@@ -94,7 +94,7 @@ require([
           });
           canvasLayer.addGraphics(csvGraphics);
 
-          let uniqueCities = [...new Set(results.data.map(d => d.e_locality).filter(c => c))].sort();
+          let uniqueCities = [...new Set(results.data.map(d => d.s_State).filter(c => c))].sort();
           let citySelector = document.getElementById('sCitySelect');
 
           citySelector.innerHTML = '';
@@ -126,7 +126,7 @@ require([
             }
 
             let matchingGraphics = canvasLayer.graphics.filter(
-              g => selectedValues.includes(g.attributes.e_locality)
+              g => selectedValues.includes(g.attributes.s_State)
             );
             canvasLayer.selectGraphicsForPathDisplay(matchingGraphics, 'SELECTION_NEW');
           });
