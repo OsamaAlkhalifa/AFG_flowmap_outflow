@@ -45,7 +45,7 @@ require([
             classMinValue: 1,
             classMaxValue: 5000,
             symbol: {
-              strokeStyle: 'rgba(255, 202, 85, 0.8)',
+              strokeStyle: 'rgba(128, 153, 208, 0.8)',
               lineWidth: 1,
               lineCap: 'round'
             }
@@ -54,16 +54,16 @@ require([
             classMinValue: 5001,
             classMaxValue: 25000,
             symbol: {
-              strokeStyle: 'rgba(255, 141, 87, 0.8)',
+              strokeStyle: 'rgba(64, 102, 184, 0.8)',
               lineWidth: 3,
               lineCap: 'round'
             }
           },
           {
             classMinValue: 25001,
-            classMaxValue: 592169,
+            classMaxValue: 465351,
             symbol: {
-              strokeStyle: 'rgba(210, 38, 48, 0.8)',
+              strokeStyle: 'rgba(0, 51, 160, 0.8)',
               lineWidth: 5,
               lineCap: 'round'
             }
