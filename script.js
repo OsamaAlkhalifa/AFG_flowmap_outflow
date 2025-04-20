@@ -85,8 +85,8 @@ require([
           var csvGraphics = results.data.map(function(datum) {
             return new Graphic({
               geometry: {
-                x: datum.s_lon,
-                y: datum.s_lat,
+                x: datum.e_lon,
+                y: datum.e_lat,
                 spatialReference: { wkid: 4326 }
               },
               attributes: datum
