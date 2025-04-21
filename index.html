@@ -76,6 +76,10 @@
   cursor: pointer;
   line-height: 1.3;
 }
+.esriPopup {
+  z-index: 9999 !important;
+  pointer-events: auto;
+}
 
 
     }
@@ -152,7 +156,6 @@
 
 
   <div id="map"></div>
-  <div id="map_root" class="esriPopup" style="position: absolute; z-index: 9999;"></div>
   <div id="legend" class="esri-widget">
     <h4>Flow Volume</h4>
     <div><span class="legend-line" style="background: yellow; height: 2px;"></span> 1 – 5,000</div>
