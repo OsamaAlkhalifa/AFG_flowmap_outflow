@@ -18,15 +18,16 @@ require([
   dom,
   on
 ) {
-  var infoWindow = new InfoWindowLite(null, domConstruct.create("div", null, document.body));
-  infoWindow.startup();
+  var popup = new InfoWindowLite(null, domConstruct.create("div", null, document.body));
+  popup.startup();
 
   var map = new Map('map', {
     basemap: 'gray-vector',
     center: [66.9, 34.5],
     zoom: 5,
-    infoWindow: infoWindow
+    infoWindow: popup
   });
+
 
 
   map.on('load', function() {
