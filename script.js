@@ -21,7 +21,7 @@ require([
       id: 'oneToManyLayer',
       visible: true,
       originAndDestinationFieldIds: {
-        originUniqueIdField: 's_State',
+        originUniqueIdField: 'e_locality',
         originGeometry: {
           x: 'e_lon',
           y: 'e_lat',
@@ -45,7 +45,7 @@ require([
             classMinValue: 1,
             classMaxValue: 5000,
             symbol: {
-              strokeStyle: 'rgba(128, 153, 208, 0.8)',
+              strokeStyle: 'rgba(255, 202, 85, 0.8)',
               lineWidth: 1,
               lineCap: 'round'
             }
@@ -54,21 +54,35 @@ require([
             classMinValue: 5001,
             classMaxValue: 25000,
             symbol: {
-              strokeStyle: 'rgba(64, 102, 184, 0.8)',
+              strokeStyle: 'rgba(255, 141, 87, 0.8)',
               lineWidth: 3,
               lineCap: 'round'
             }
           },
           {
             classMinValue: 25001,
-            classMaxValue: 465351,
+            classMaxValue: 592169,
             symbol: {
-              strokeStyle: 'rgba(0, 51, 160, 0.8)',
+              strokeStyle: 'rgba(210, 38, 48, 0.8)',
               lineWidth: 5,
               lineCap: 'round'
             }
           }
         ]
+      },
+      pointSymbol: {
+        origin: {
+          radius: 8,
+          fillStyle: 'rgba(0, 128, 0, 0.9)',
+          strokeStyle: 'white',
+          lineWidth: 2
+        },
+        destination: {
+          radius: 6,
+          fillStyle: 'rgba(0, 0, 255, 0.8)',
+          strokeStyle: 'white',
+          lineWidth: 1.5
+        }
       }
     });
 
@@ -85,8 +99,8 @@ require([
           var csvGraphics = results.data.map(function(datum) {
             return new Graphic({
               geometry: {
-                x: datum.e_lon,
-                y: datum.e_lat,
+                x: datum.s_lon,
+                y: datum.s_lat,
                 spatialReference: { wkid: 4326 }
               },
               attributes: datum
@@ -94,7 +108,7 @@ require([
           });
           canvasLayer.addGraphics(csvGraphics);
 
-          let uniqueCities = [...new Set(results.data.map(d => d.s_State).filter(c => c))].sort();
+          let uniqueCities = [...new Set(results.data.map(d => d.e_locality).filter(c => c))].sort();
           let citySelector = document.getElementById('sCitySelect');
 
           citySelector.innerHTML = '';
@@ -126,7 +140,7 @@ require([
             }
 
             let matchingGraphics = canvasLayer.graphics.filter(
-              g => selectedValues.includes(g.attributes.s_State)
+              g => selectedValues.includes(g.attributes.e_locality)
             );
             canvasLayer.selectGraphicsForPathDisplay(matchingGraphics, 'SELECTION_NEW');
           });
