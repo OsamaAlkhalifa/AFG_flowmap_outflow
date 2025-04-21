@@ -129,6 +129,19 @@
     margin-bottom: 4px;
   }
   </style>
+  <style>
+  .esriPopup {
+    z-index: 9999 !important;
+    pointer-events: auto;
+  }
+  .esriPopup .esriPopupWrapper {
+    background: white !important;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+  }
+</style>
+
 </head>
 
 <div id="cityFilter">
@@ -139,7 +152,7 @@
 
 
   <div id="map"></div>
-  
+  <div id="map_root" class="esriPopup" style="position: absolute; z-index: 9999;"></div>
   <div id="legend" class="esri-widget">
     <h4>Flow Volume</h4>
     <div><span class="legend-line" style="background: yellow; height: 2px;"></span> 1 – 5,000</div>
