@@ -45,7 +45,7 @@ require([
             classMinValue: 1,
             classMaxValue: 5000,
             symbol: {
-              strokeStyle: 'rgba(255, 202, 85, 0.8)',
+              strokeStyle: 'rgba(128, 153, 208, 0.8)',
               lineWidth: 1,
               lineCap: 'round'
             }
@@ -54,7 +54,7 @@ require([
             classMinValue: 5001,
             classMaxValue: 25000,
             symbol: {
-              strokeStyle: 'rgba(255, 141, 87, 0.8)',
+              strokeStyle: 'rgba(64, 102, 64, 0.8)',
               lineWidth: 3,
               lineCap: 'round'
             }
@@ -63,7 +63,7 @@ require([
             classMinValue: 25001,
             classMaxValue: 592169,
             symbol: {
-              strokeStyle: 'rgba(210, 38, 48, 0.8)',
+              strokeStyle: 'rgba(0, 51, 160, 0.8)',
               lineWidth: 5,
               lineCap: 'round'
             }
@@ -75,7 +75,7 @@ require([
         symbol: {
           globalCompositeOperation: 'destination-over',
           radius: 8,
-          fillStyle: 'rgba(0, 128, 0, 0.9)',
+          fillStyle: 'rgba(255, 184, 28, 0.9)',
           strokeStyle: 'white',
           lineWidth: 2,
           shadowBlur: 0
@@ -86,10 +86,32 @@ require([
         symbol: {
           globalCompositeOperation: 'destination-over',
           radius: 6,
-          fillStyle: 'rgba(0, 0, 255, 0.8)',
+          fillStyle: 'rgba(255, 103, 31, 0.8)',
           strokeStyle: 'white',
           lineWidth: 1.5,
           shadowBlur: 0
+        }
+      },
+      originHighlightCircleProperties: {
+        type: 'simple',
+        symbol: {
+          globalCompositeOperation: 'destination-over',
+          radius: 10,
+          fillStyle: 'rgba(255, 255, 0, 0.9)',
+          strokeStyle: '#FF0000',
+          lineWidth: 3,
+          shadowBlur: 10
+        }
+      },
+      destinationHighlightCircleProperties: {
+        type: 'simple',
+        symbol: {
+          globalCompositeOperation: 'destination-over',
+          radius: 8,
+          fillStyle: 'rgba(210, 38, 48, 0.8)',
+          strokeStyle: '#000000',
+          lineWidth: 3,
+          shadowBlur: 10
         }
       }
     });
@@ -158,5 +180,22 @@ require([
         }
       });
     }
+
+    // highlight points and show name on hover
+    on(oneToManyLayer, 'mouse-over', function(evt) {
+      var graphic = evt.graphic;
+      graphic.attributes._isSelectedForHighlight = true;
+      oneToManyLayer._redrawCanvas();
+      map.infoWindow.setContent("<b>" + (graphic.attributes.e_locality || graphic.attributes.s_State || 'N/A') + "</b>");
+      map.infoWindow.setTitle("Location");
+      map.infoWindow.show(evt.mapPoint);
+    });
+
+    on(oneToManyLayer, 'mouse-out', function(evt) {
+      var graphic = evt.graphic;
+      graphic.attributes._isSelectedForHighlight = false;
+      oneToManyLayer._redrawCanvas();
+      map.infoWindow.hide();
+    });
   });
 });
