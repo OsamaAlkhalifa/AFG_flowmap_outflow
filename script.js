@@ -54,7 +54,7 @@ require([
             classMinValue: 5001,
             classMaxValue: 25000,
             symbol: {
-              strokeStyle: 'rgba(64, 102, 64, 0.8)',
+              strokeStyle: 'rgba(64, 102, 184, 0.8)',
               lineWidth: 3,
               lineCap: 'round'
             }
@@ -74,7 +74,7 @@ require([
         type: 'simple',
         symbol: {
           globalCompositeOperation: 'destination-over',
-          radius: 8,
+          radius: 5,
           fillStyle: 'rgba(255, 184, 28, 0.9)',
           strokeStyle: 'white',
           lineWidth: 2,
@@ -85,7 +85,7 @@ require([
         type: 'simple',
         symbol: {
           globalCompositeOperation: 'destination-over',
-          radius: 6,
+          radius: 7,
           fillStyle: 'rgba(255, 103, 31, 0.8)',
           strokeStyle: 'white',
           lineWidth: 1.5,
