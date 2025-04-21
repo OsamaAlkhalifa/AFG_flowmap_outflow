@@ -2,19 +2,32 @@ require([
   'Canvas-Flowmap-Layer/CanvasFlowmapLayer',
   'esri/graphic',
   'esri/map',
+  'esri/dijit/InfoWindowLite',
+  'esri/domUtils',
+  'dojo/dom-construct',
+  'dojo/dom',
   'dojo/on',
   'dojo/domReady!'
 ], function(
   CanvasFlowmapLayer,
   Graphic,
   Map,
+  InfoWindowLite,
+  domUtils,
+  domConstruct,
+  dom,
   on
 ) {
+  var infoWindow = new InfoWindowLite(null, domConstruct.create("div", null, document.body));
+  infoWindow.startup();
+
   var map = new Map('map', {
     basemap: 'gray-vector',
     center: [66.9, 34.5],
-    zoom: 5
+    zoom: 5,
+    infoWindow: infoWindow
   });
+
 
   map.on('load', function() {
     var oneToManyLayer = new CanvasFlowmapLayer({
