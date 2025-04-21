@@ -45,7 +45,7 @@ require([
             classMinValue: 1,
             classMaxValue: 5000,
             symbol: {
-              strokeStyle: 'rgba(0, 51, 160, 0.8)',
+              strokeStyle: 'rgba(255, 202, 85, 0.8)',
               lineWidth: 1,
               lineCap: 'round'
             }
@@ -54,7 +54,7 @@ require([
             classMinValue: 5001,
             classMaxValue: 25000,
             symbol: {
-              strokeStyle: 'rgba(128, 153, 208, 0.8)',
+              strokeStyle: 'rgba(255, 141, 87, 0.8)',
               lineWidth: 3,
               lineCap: 'round'
             }
@@ -70,18 +70,26 @@ require([
           }
         ]
       },
-      pointSymbol: {
-        origin: {
+      originCircleProperties: {
+        type: 'simple',
+        symbol: {
+          globalCompositeOperation: 'destination-over',
           radius: 8,
           fillStyle: 'rgba(0, 128, 0, 0.9)',
           strokeStyle: 'white',
-          lineWidth: 2
-        },
-        destination: {
+          lineWidth: 2,
+          shadowBlur: 0
+        }
+      },
+      destinationCircleProperties: {
+        type: 'simple',
+        symbol: {
+          globalCompositeOperation: 'destination-over',
           radius: 6,
           fillStyle: 'rgba(0, 0, 255, 0.8)',
           strokeStyle: 'white',
-          lineWidth: 1.5
+          lineWidth: 1.5,
+          shadowBlur: 0
         }
       }
     });
