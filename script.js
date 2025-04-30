@@ -1,9 +1,13 @@
-require([
-  'Canvas-Flowmap-Layer/CanvasFlowmapLayer',
+'Canvas-Flowmap-Layer/CanvasFlowmapLayer',
   'esri/graphic',
   'esri/map',
   'esri/dijit/InfoWindowLite',
   'esri/domUtils',
+  'esri/symbols/TextSymbol',
+  'esri/symbols/Font',
+  'esri/Color',
+  'esri/layers/GraphicsLayer',
+  'esri/geometry/Point',
   'dojo/dom-construct',
   'dojo/dom',
   'dojo/on',
@@ -14,6 +18,11 @@ require([
   Map,
   InfoWindowLite,
   domUtils,
+  TextSymbol,
+  Font,
+  Color,
+  GraphicsLayer,
+  Point,
   domConstruct,
   dom,
   on
@@ -151,6 +160,37 @@ require([
             });
           });
           canvasLayer.addGraphics(csvGraphics);
+          // Step 3: Add source & destination labels
+var sourceLabelLayer = new GraphicsLayer();
+var destinationLabelLayer = new GraphicsLayer();
+
+results.data.forEach(function(datum) {
+  // Source label
+  if (datum.e_locality && datum.e_lat && datum.e_lon) {
+    var sourcePoint = new Point(datum.e_lon, datum.e_lat, { wkid: 4326 });
+    var sourceText = new TextSymbol(datum.e_locality)
+      .setOffset(0, 10)
+      .setFont(new Font("10pt").setWeight(Font.WEIGHT_BOLD))
+      .setColor(new Color([0, 0, 0, 0.9]));
+    var sourceGraphic = new Graphic(sourcePoint, sourceText);
+    sourceLabelLayer.add(sourceGraphic);
+  }
+
+  // Destination label
+  if (datum.s_State && datum.s_lat && datum.s_lon) {
+    var destPoint = new Point(datum.s_lon, datum.s_lat, { wkid: 4326 });
+    var destText = new TextSymbol(datum.s_State)
+      .setOffset(0, 10)
+      .setFont(new Font("10pt"))
+      .setColor(new Color([60, 60, 60, 0.8]));
+    var destGraphic = new Graphic(destPoint, destText);
+    destinationLabelLayer.add(destGraphic);
+  }
+});
+
+// Step 4: Add label layers to the map
+map.addLayer(sourceLabelLayer);
+map.addLayer(destinationLabelLayer);
 
           let uniqueCities = [...new Set(results.data.map(d => d.e_locality).filter(c => c))].sort();
           let citySelector = document.getElementById('sCitySelect');
