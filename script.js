@@ -1,4 +1,4 @@
-'Canvas-Flowmap-Layer/CanvasFlowmapLayer',
+require(['Canvas-Flowmap-Layer/CanvasFlowmapLayer',
   'esri/graphic',
   'esri/map',
   'esri/dijit/InfoWindowLite',
