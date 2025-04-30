@@ -132,6 +132,21 @@
   #legend div {
     margin-bottom: 4px;
   }
+    
+  .line-small {
+    background: #f7e75d; /* Custom yellow */
+    height: 2px;
+  }
+
+  .line-medium {
+    background: #f7973b; /* Custom orange */
+    height: 4px;
+  }
+
+  .line-large {
+    background: #d82c2c; /* Custom red */
+    height: 6px;
+  }
   </style>
 
 
@@ -147,9 +162,9 @@
   <div id="map"></div>
   <div id="legend" class="esri-widget">
     <h4>Flow Volume</h4>
-    <div><span class="legend-line" style="background: yellow; height: 2px;"></span> 1 – 5,000</div>
-    <div><span class="legend-line" style="background: orange; height: 4px;"></span> 5,001 – 25,000</div>
-    <div><span class="legend-line" style="background: red; height: 6px;"></span> 25,001 – 60,000</div>
+    <div><span class="legend-line" style="background: line-small; height: 2px;"></span> 1 – 5,000</div>
+    <div><span class="legend-line" style="background: line-medium; height: 4px;"></span> 5,001 – 25,000</div>
+    <div><span class="legend-line" style="background: line-large; height: 6px;"></span> 25,001 – 60,000</div>
   </div>
   
 
