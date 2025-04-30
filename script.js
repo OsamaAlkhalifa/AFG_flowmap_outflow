@@ -159,7 +159,7 @@ require([
 
           let allCheckbox = document.createElement('div');
           allCheckbox.innerHTML = `
-            <label><input type="checkbox" value="__all__" checked> <strong>All FMPs</strong></label><br>
+            <label><input type="checkbox" value="__all__" checked> <strong>All provinces</strong></label><br>
           `;
           citySelector.appendChild(allCheckbox);
 
