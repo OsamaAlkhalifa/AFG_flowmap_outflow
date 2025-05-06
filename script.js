@@ -66,7 +66,7 @@ require(['Canvas-Flowmap-Layer/CanvasFlowmapLayer',
         classBreakInfos: [
           {
             classMinValue: 1,
-            classMaxValue: 5000,
+            classMaxValue: 25000,
             symbol: {
               strokeStyle: 'rgba(128, 153, 208, 0.8)',
               lineWidth: 1,
@@ -74,8 +74,8 @@ require(['Canvas-Flowmap-Layer/CanvasFlowmapLayer',
             }
           },
           {
-            classMinValue: 5001,
-            classMaxValue: 25000,
+            classMinValue: 25001,
+            classMaxValue: 100000,
             symbol: {
               strokeStyle: 'rgba(64, 102, 184, 0.8)',
               lineWidth: 3,
@@ -83,8 +83,8 @@ require(['Canvas-Flowmap-Layer/CanvasFlowmapLayer',
             }
           },
           {
-            classMinValue: 25001,
-            classMaxValue: 592169,
+            classMinValue: 100,001,
+            classMaxValue: 465,351,
             symbol: {
               strokeStyle: 'rgba(0, 51, 160, 0.8)',
               lineWidth: 5,
